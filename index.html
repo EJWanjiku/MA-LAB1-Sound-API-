@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sound API Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Sound API Lab</h1>
+      </header>
+
+      <section class="card" aria-label="Audio loader">
+        <div class="row wrap">
+          <label class="file">
+            <span class="fileLabel">Choose audio</span>
+            <input id="fileInput" type="file" accept="audio/*" />
+          </label>
+          <div class="meta">
+            <div class="trackName" id="trackName">No file loaded</div>
+            <div class="hint">
+              Shortcuts: <kbd>Space</kbd> play/pause, <kbd>L</kbd> loop, <kbd>M</kbd> mute
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-label="Audio controls">
+        <div class="row">
+          <button id="playBtn" class="btn primary" type="button" disabled>
+            Play
+          </button>
+          <button id="pauseBtn" class="btn" type="button" disabled>
+            Pause
+          </button>
+          <button id="muteBtn" class="btn" type="button" disabled>
+            Mute
+          </button>
+          <button id="loopBtn" class="btn" type="button" disabled>
+            Loop: Off
+          </button>
+        </div>
+
+        <div class="row seekRow">
+          <span class="time" id="timeCurrent">0:00</span>
+          <input
+            id="seek"
+            class="seek"
+            type="range"
+            min="0"
+            max="1000"
+            value="0"
+            step="1"
+            disabled
+            aria-label="Seek"
+          />
+          <span class="time" id="timeDuration">0:00</span>
+        </div>
+
+        <div class="row wrap">
+          <div class="control">
+            <label for="volume" class="controlLabel">Volume</label>
+            <input
+              id="volume"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.8"
+              disabled
+              aria-label="Volume"
+            />
+            <output id="volumeOut" class="output">80%</output>
+          </div>
+
+          <div class="status" id="status" role="status" aria-live="polite">
+            Load a file to begin.
+          </div>
+        </div>
+      </section>
+
+      <!-- Hidden audio element; controlled via JavaScript -->
+      <audio id="audio" preload="metadata"></audio>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
